@@ -4,10 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
-//#define cities 5
 
-/*Esta union es la que se usara para realizar las operaciones de bits en los numeros flotantes posteriores.
-Consiste en una parte flotante que representa al numero y una parte entera para poder realizar las operaciones*/
 int map [5][5] = {
      {0, 3, 5, 3, 7},
      {2, 0, 8, 9, 15},
@@ -54,7 +51,6 @@ void getProbability(int population, int cities, int popArray[population][cities]
     printf("\nprob total: %lf", popProba[9]);
 }
 
-//void normalize (int population, int cities, int popArray[population][cities], int evalArray[population])
 void getFitness(int population, int cities, int index,int popArray[population][cities], int evalArray[population]){
     int fitness;
     int i, j;
@@ -62,7 +58,6 @@ void getFitness(int population, int cities, int index,int popArray[population][c
     int cumulativeDistance = 0;
     float sum = 0;
 
-    //for (i = 0; i < population; i++){
         for (i = 1; i < cities; i++ ){
             int startPoint = popArray[index][i-1];
             int endPoint= popArray[index][i];
@@ -70,34 +65,6 @@ void getFitness(int population, int cities, int index,int popArray[population][c
 
         }
         evalArray[index] = distance;
-
-        /* for (i = 0; i < population; i++){
-        printf("%d ", evalArray[i]);
-        cumulativeDistance += evalArray[i];
-    }
-       /* distance = 0;
-    //}
-
-    for (i = 0; i < population; i++){
-        printf("%d ", evalArray[i]);
-        cumulativeDistance += evalArray[i];
-    }
-    printf("\n");
-    for (i = 0; i < population; i++){
-        popProba[i] =  (1 - ((evalArray[i]) /(float) cumulativeDistance)) / (population - 1) ;
-        sum+= popProba[i];
-        printf("%lf ", popProba[i]);
-    }
-
-    printf("\nprob total: %lf\n", sum);
-
-    for (i = 1; i < population; i++){
-        popProba[i] = popProba[i] + popProba[i-1];
-        //printf("%lf", popProba[i]);
-    }
-
-    printf("\nprob total: %lf", popProba[9]);
-*/
 }
 
 bool notInCitiesPlaced(int cities, int citiesPlaced[cities], int num){
@@ -171,6 +138,7 @@ int main( ) {
 
         getProbability(population, cities, popArray, evalArray, popProba);
         //TODO: Ruletas para elegir padres, metodos de crossover y mutacion
+        s
     }
 
         
