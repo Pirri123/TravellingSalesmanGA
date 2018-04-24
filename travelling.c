@@ -7,12 +7,33 @@
 
 //Map of the journey the travelling salesman must go on, it represents the distance from a given city to another
 //i.e the value of map[i][j] is the distance from the i-th city to the j-th one.
-int map [5][5] = {
-     {0, 3, 5, 3, 7},
-     {2, 0, 8, 9, 15},
-     {4, 10, 0, 3, 9},
-     {9, 12, 7, 0, 2},
-     {15, 12, 11, 4, 0 }
+int map [25][25] = {
+     {0, 3, 5, 3, 7, 8, 13, 5, 13, 19, 2, 5, 20, 11, 15, 6, 7, 8, 2, 10, 25, 11, 14, 24, 19 },
+     {2, 0, 8, 9, 15, 14, 15, 5, 21, 20, 1, 11, 3, 18, 16, 8, 2, 25, 19, 6, 4, 22, 25, 5, 25},
+     {4, 10, 0, 3, 9, 23, 13, 7, 22, 8, 9, 24, 10, 4, 6, 17, 2, 16, 4, 23, 8, 24, 14, 17, 14},
+     {9, 12, 7, 0, 2, 4, 23, 1, 17, 25, 22, 22, 8, 9, 5, 16, 22, 23, 10, 20, 7, 81, 12, 14, 8},
+     {15, 12, 11, 4, 0, 15, 10, 4, 6, 20, 15, 17, 10, 2, 11, 16, 10, 11, 24, 14, 5 ,6, 7, 8, 9 },
+     {15, 7, 19, 25, 20, 0, 7, 3, 1, 5, 22, 8, 3, 4, 24, 12, 5, 6, 20, 17, 1, 2, 3, 4, 5},
+     {5, 17, 20, 14, 14, 19, 0, 16, 25, 9, 25, 9, 17, 20, 14, 14, 19, 12, 5, 3, 14, 16, 18, 20, 13},
+     {7, 14, 8, 16, 13, 24, 15, 0, 1, 1, 20, 18, 25, 11, 17, 16, 24, 15, 3, 1, 6, 8, 11, 14, 20},
+     {19, 9, 5, 18, 10, 18, 25, 15, 0, 23, 1, 25, 2, 15, 20, 14, 4, 9, 19, 6, 3, 3, 3, 14, 3},
+     {21, 10, 12, 6, 1, 16, 9, 3, 15, 0, 16, 1, 20, 12, 4, 6, 6, 13, 6, 14, 18, 16, 14, 12, 7},
+     {13, 9, 10, 18, 14, 21, 14, 11, 24, 4, 0, 18, 18, 23, 20, 22, 11, 7, 11, 12, 7, 3, 16, 17, 2},
+     {9, 14, 15, 21, 15, 11, 7, 13, 22, 21, 15, 0, 1, 7, 9, 2, 14, 15, 21, 21, 22, 23, 24, 25, 26},
+     {10, 20, 16, 11, 19, 17, 4, 12, 22, 2, 21, 1, 0, 22, 4, 24, 4, 21, 3, 15, 26, 25, 24, 23, 22},
+     {8, 14, 20, 1, 13, 17, 17, 2, 14, 15, 6, 19, 21, 0, 23, 8, 25, 6, 16, 13, 10, 8, 7, 6, 2},
+     {11, 24, 3, 19, 9, 13, 13, 22, 1, 6, 11, 15, 7, 2, 0, 22, 2, 16, 25, 25, 9, 9, 3, 3, 18},
+     {18, 2, 14, 13, 21, 24, 4, 25, 3, 9, 24, 21, 12, 11, 11, 0, 16, 8, 5, 17, 16, 20, 23, 22, 1},
+     {23, 4, 9, 6, 13, 24, 5, 3, 14, 1, 7, 15, 17, 4, 23, 17, 0, 23, 9, 3, 4, 5, 6, 7, 8},
+     {20, 18, 2, 2, 2, 13, 23, 13, 11, 18, 16, 7, 21, 16, 2, 4, 2, 0, 18, 4, 8, 12, 16, 20, 24},
+     {17, 24, 8, 2, 6, 4, 1, 1, 21, 3, 19 ,18, 23, 22, 11, 5, 18, 25, 0, 2, 6, 8, 3, 15, 12},
+     {20, 20, 5, 15, 20, 8, 19, 11, 5, 21, 20, 5, 22, 9, 19, 19, 15, 18, 5, 0, 8, 15, 32, 11, 9},
+     {18, 17, 17, 18, 16, 5, 22, 10, 24, 8, 10, 2, 4, 25, 21, 5, 8, 11, 1, 2, 0, 22, 8, 19, 12},
+     {13, 10, 11, 23, 2, 18, 22, 2, 17, 23, 2, 14 ,18, 16, 10, 9, 6, 20, 25, 6, 17, 0, 5, 15, 12},
+     {8, 17, 20, 19, 17, 21, 12, 21, 4, 18, 8, 1, 12, 2, 10, 15, 8, 24, 22, 9, 20, 12, 0, 22, 11},
+     {4, 4, 25, 8, 21, 9, 7, 10, 1, 15, 11, 5, 3, 25, 2, 9, 22, 8, 7, 17, 22, 6, 6, 0, 17},
+     {1, 2, 12, 4, 10, 18, 8, 12, 8, 22, 3, 9, 1, 4, 20, 12, 16, 15, 17, 9, 4, 17, 12, 11, 0}
+
 };
 
 //Generates random double in the given range
@@ -114,12 +135,12 @@ void getProbability(int population, int cities, int popArray[population][cities]
     int cumulativeDistance = 0; //distance of every tour in a generation
     float sum = 0;
     for (i = 0; i < population; i++){
-        printf("%d ", evalArray[i]);
+        //printf("%d ", evalArray[i]);
         cumulativeDistance += evalArray[i];
     }
 
-    printf("\nCumDist: %d", cumulativeDistance);
-    printf("\n");
+    //printf("\nCumDist: %d", cumulativeDistance);
+    //printf("\n");
 
     /*The probability must be in a range of 0.0 - 1, so it must be normalized
     This normalization means to find the total sum of each tour and then divide the given distance of a particular tour by the total distance
@@ -133,10 +154,10 @@ void getProbability(int population, int cities, int popArray[population][cities]
         if (i > 0){
             popProba[i] += popProba[i-1];
         }
-        printf("%lf ", popProba[i]);
+        //printf("%lf ", popProba[i]);
     }
 
-    printf("\nprob total: %lf", popProba[9]);
+    //printf("\nprob total: %lf", popProba[9]);
 }
 
 //evaluates the function to get its fitness, the objective is to minimize distance
@@ -184,11 +205,11 @@ void generateRoads(int population, int cities, int popArray[population][cities],
 /* The main initialized the information needed to solve the problem. 
 This process then repeats itself depending on how many generations were set and the best route it outputted*/
 int main( ) {
-
+   clock_t begin=clock();
    srand(time(NULL));
-   int cities = 5; //amount of cities in the tour
-   int population = 30; //Size of population, i.e how many tours are set in a given generation
-   int generations = 15; //La cantidad de generaciones i.e how many times the program should loop
+   int cities = 25; //amount of cities in the tour
+   int population = 500; //Size of population, i.e how many tours are set in a given generation
+   int generations = 250; //La cantidad de generaciones i.e how many times the program should loop
    double mutationChance = 0.03; //1.0 will be 100%
 
    int popArray [population][cities]; //Where population values are stored
@@ -210,14 +231,14 @@ int main( ) {
 
     for (i = 0; i < generations; i++){
 
-        printf("generation is\n\n");
+        /*printf("generation is\n\n");
         for(j = 0; j < population; j++){
             for (k = 0; k < cities; k++){
                 printf("%d ", popArray[j][k]);
             }
             printf("\n");
         }
-        printf("\n\nNormalized:\n ");
+        printf("\n\nNormalized:\n ");*/
 
         for (j = 0; j < population; j++){
             //makes changes to evalArray
@@ -287,6 +308,8 @@ int main( ) {
         }
         printf("\n");
         
+    clock_t end=clock();
+    printf("Time taken:%lf",(double)(end-begin)/CLOCKS_PER_SEC);
 }
 
 
